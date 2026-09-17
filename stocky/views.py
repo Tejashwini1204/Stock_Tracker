@@ -31,28 +31,28 @@ def index(request):
             PARAMS = {'function':'TIME_SERIES_INTRADAY',
                 'symbol':stock_name,
                 'interval':time_frame,
-                'apikey':'9KV9D40VB10REF6H'
+                'apikey': os.getenv('ALPHAVANTAGE_API_KEY')
                 }
             time_frame_string = 'Time Series ('+ time_frame +')'
         elif time_frame in ('1D'):
             URL = 'https://www.alphavantage.co/query'
             PARAMS = {'function':'TIME_SERIES_DAILY',
                 'symbol':stock_name,
-                'apikey':'9KV9D40VB10REF6H'
+                'apikey': os.getenv('ALPHAVANTAGE_API_KEY')
                 }
             time_frame_string = 'Time Series (Daily)'
         elif time_frame in ('1W'):
             URL = 'https://www.alphavantage.co/query'
             PARAMS = {'function':'TIME_SERIES_WEEKLY',
                 'symbol':stock_name,
-                'apikey':'REMOVED_API_KEY'
+                'apikey': os.getenv('ALPHAVANTAGE_API_KEY')
                 }
             time_frame_string = 'Weekly Time Series'
         elif time_frame in ('1M'):
             URL = 'https://www.alphavantage.co/query'
             PARAMS = {'function':'TIME_SERIES_MONTHLY',
                 'symbol':stock_name,
-                'apikey':'REMOVED_API_KEY'
+                'apikey': os.getenv('ALPHAVANTAGE_API_KEY')
                 }
             time_frame_string = 'Monthly Time Series'
         req = requests.get(url=URL, params = PARAMS)
